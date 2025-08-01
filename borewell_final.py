@@ -1,5 +1,8 @@
 import math
 
+# Define pi as a constant since some languages don't support math.pi
+PI = 3.14159265358979323846
+
 def surface_function(x, A, B):
     """Calculate Y = sum(sin(A[i] + B[i]*x)) for i=0 to n-1"""
     y = 0
@@ -14,7 +17,7 @@ def find_local_maxima(A, B):
     
     # Use very fine granularity for accurate peak detection
     num_points = 50000
-    step = (2 * math.pi) / num_points
+    step = (2 * PI) / num_points
     
     maxima = []
     x_values = []
@@ -55,7 +58,7 @@ def find_local_maxima(A, B):
     # At x = 2π: check if function is increasing immediately before
     if len(y_values) >= 3:
         if y_values[-1] >= y_values[-2] - tolerance and y_values[-2] >= y_values[-3]:
-            two_pi = 2 * math.pi
+            two_pi = 2 * PI
             if round(two_pi, 10) not in [round(x, 10) for x in maxima]:
                 maxima.append(two_pi)
     
